@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Todo List</string>
+    <string name="add_button">Add</string>
+    <string name="wifi_check">Check WiFi</string>
+    <string name="wifi_undefined">WiFi status unknown</string>
+    <string name="todo_list">Task list</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="place_holder">Place Holder</string>
+    <string name="checkbox">CheckBox</string>
+</resources>
