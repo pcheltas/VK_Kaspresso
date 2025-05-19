@@ -1,10 +1,8 @@
-package com.example.myapplication
+package com.example.myapplication.activities
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import com.example.myapplication.activities.NewTaskActivity
-import com.example.myapplication.activities.WifiCheckActivity
 import com.example.myapplication.databinding.ActivityMainBinding
 
 class MainActivity : ComponentActivity() {
