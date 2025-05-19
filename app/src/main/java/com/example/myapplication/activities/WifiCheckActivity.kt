@@ -1,9 +1,9 @@
 package com.example.myapplication.activities
 
 import android.content.Context
+import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.ActivityWifiCheckBinding
@@ -21,8 +21,14 @@ class WifiCheckActivity : AppCompatActivity() {
             if (isWifiConnected()) {
                 binding.tvWifiStatus.text = "Wi-Fi connected"
             } else {
-                binding.tvWifiStatus.text = "Wi-Fi not connected"
+                binding.tvWifiStatus.text = "Wi-Fi disconnected"
             }
+        }
+
+        binding.btnGoToKaspressoTutorial.setOnClickListener {
+            val intent = Intent(this, WebViewActivity::class.java)
+            intent.putExtra("url", "https://kasperskylab.github.io/Kaspresso/ru/Tutorial/")
+            startActivity(intent)
         }
     }
 

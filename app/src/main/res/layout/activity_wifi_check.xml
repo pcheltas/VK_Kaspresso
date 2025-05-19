@@ -3,22 +3,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:gravity="center"
+    android:orientation="vertical"
     android:padding="16dp"
+    android:layout_marginTop="80dp"
     tools:context=".activities.WifiCheckActivity">
 
     <Button
         android:id="@+id/btn_check_wifi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/wifi_check"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp"
+        android:text="@string/wifi_check" />
 
     <TextView
         android:id="@+id/tv_wifi_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/wifi_undefined"
-        android:textSize="18sp"/>
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/btn_go_to_kaspresso_tutorial"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/purple_200"
+        android:text="Go to tutorial" />
+
 </LinearLayout>
