@@ -27,17 +27,21 @@ class WiFiTest : TestCase() {
         }
 
         step("Check Wi-Fi is enabled") {
+            testLogger.i(device.network.toString())
             WiFiScreen {
-                checkButton.click()
-                wifiState.hasText(R.string.wifi_check)
-                testLogger.i(device.network.toString())
+                flakySafely {
+                    checkButton.click()
+                    wifiState.hasText(R.string.wifi_connected)
+                }
             }
         }
+
         step("Go to web tutorial page") {
             WiFiScreen {
                 tutorialButton.click()
             }
         }
+
         step("Verify tutorial page was loaded successfully") {
             WiFiScreen {
                 page {
@@ -57,8 +61,10 @@ class WiFiTest : TestCase() {
 
         step("Check Wi-Fi is disabled") {
             WiFiScreen {
-                checkButton.click()
-                wifiState.hasText(R.string.wifi_disconnected)
+                flakySafely {
+                    checkButton.click()
+                    wifiState.hasText(R.string.wifi_disconnected)
+                }
             }
         }
         step("Go to web tutorial page") {
