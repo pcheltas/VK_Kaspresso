@@ -2,6 +2,7 @@ package com.example.myapplication.tests
 
 import androidx.test.espresso.web.webdriver.Locator
 import androidx.test.ext.junit.rules.ActivityScenarioRule
+import com.example.myapplication.R
 import com.example.myapplication.activities.WifiCheckActivity
 import com.example.myapplication.screen.WiFiScreen
 import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
@@ -9,6 +10,13 @@ import org.junit.Rule
 import org.junit.Test
 
 class WiFiTest : TestCase() {
+
+    companion object {
+        private const val HEADER_TEXT: String = "Введение"
+        private const val HEADER_LOCATOR: String = "_1"
+        private const val ERR_LOCATOR: String = "//*[contains(text(), 'net')]"
+        private const val ERR_NET_TEXT: String = "ERR_INTERNET_DISCONNECTED"
+    }
     @get:Rule
     val activityRule = ActivityScenarioRule(WifiCheckActivity::class.java)
 
@@ -21,7 +29,7 @@ class WiFiTest : TestCase() {
         step("Check Wi-Fi is enabled") {
             WiFiScreen {
                 checkButton.click()
-                wifiState.hasText("Wi-Fi connected")
+                wifiState.hasText(R.string.wifi_check)
             }
         }
         step("Go to web tutorial page") {
@@ -32,8 +40,8 @@ class WiFiTest : TestCase() {
         step("Verify tutorial page was loaded successfully") {
             WiFiScreen {
                 page {
-                    withElement(Locator.ID, "_1") {
-                        containsText("Введение")
+                    withElement(Locator.ID, HEADER_LOCATOR) {
+                        containsText(HEADER_TEXT)
                     }
                 }
             }
@@ -46,10 +54,10 @@ class WiFiTest : TestCase() {
             device.network.disable()
         }
 
-        step("Check Wi-Fi is disables") {
+        step("Check Wi-Fi is disabled") {
             WiFiScreen {
                 checkButton.click()
-                wifiState.hasText("Wi-Fi disconnected")
+                wifiState.hasText(R.string.wifi_disconnected)
             }
         }
         step("Go to web tutorial page") {
@@ -60,8 +68,8 @@ class WiFiTest : TestCase() {
         step("Verify tutorial page was not loaded") {
             WiFiScreen {
                 page {
-                    withElement(Locator.XPATH, "//*[contains(text(), 'net')]") {
-                        containsText("ERR_INTERNET_DISCONNECTED")
+                    withElement(Locator.XPATH, ERR_LOCATOR) {
+                        containsText(ERR_NET_TEXT)
                     }
                 }
             }

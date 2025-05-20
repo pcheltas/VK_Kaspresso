@@ -13,25 +13,52 @@ import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
 import org.hamcrest.Description
 import org.hamcrest.Matcher
 import org.hamcrest.TypeSafeMatcher
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import org.junit.runner.RunWith
+import org.junit.runners.Parameterized
 
-class ToDoTest : TestCase() {
+@RunWith(Parameterized::class)
+class ToDoTest(
+    private val name: String,
+    private val description: String,
+    private val hours: Int,
+    private val minutes: Int
+) : TestCase() {
+
+    private lateinit var scenario: AddTaskScenario
+
+    companion object {
+        @JvmStatic
+        @Parameterized.Parameters
+        fun data() = listOf(
+            arrayOf("Buy groceries", "Milk, apples, pork", 18, 30)
+        )
+    }
+
     @get:Rule
     val activityRule = ActivityScenarioRule(NewTaskActivity::class.java)
 
-    @Test
-    fun testAddNewTask() = run {
-        step("Create new task") {
-            scenario(AddTaskScenario())
+    @Before
+    fun setUp() {
+        scenario = AddTaskScenario(
+            name = "Go to dentist",
+            description = "Dr. name - Mr. Green",
+            timeHour = 12,
+            timeMinute = 30
+        )
+
+        run{
+            step("Create new task") {
+                scenario(scenario)
+            }
         }
     }
 
+
     @Test
     fun testCompleteTask() = run {
-        step("Create new task") {
-            scenario(AddTaskScenario())
-        }
 
         step("Mask task as completed") {
             ToDoScreen.recyclerView {
@@ -52,9 +79,6 @@ class ToDoTest : TestCase() {
 
     @Test
     fun testDeleteTask() = run {
-        step("Create new task") {
-            scenario(AddTaskScenario())
-        }
 
         step("Click on delete button") {
             ToDoScreen.recyclerView {
@@ -73,9 +97,6 @@ class ToDoTest : TestCase() {
 
     @Test
     fun testEditTask() = run {
-        step("Create new task") {
-            scenario(AddTaskScenario())
-        }
 
         step("Click on task and change task data") {
             ToDoScreen.recyclerView {
@@ -84,10 +105,10 @@ class ToDoTest : TestCase() {
                 }
             }
             NewTaskScreen {
-                nameEdit.replaceText("Buy groceries")
-                descEdit.replaceText("Milk, apples, pork")
+                nameEdit.replaceText(name)
+                descEdit.replaceText(description)
                 timePickerButton.click()
-                timePicker.setTime(18, 30)
+                timePicker.setTime(hours, minutes)
                 timePickerOkButton.click()
                 saveButton.click()
             }
@@ -96,8 +117,8 @@ class ToDoTest : TestCase() {
         step("Verify task has been changed") {
             ToDoScreen.recyclerView {
                 childAt<ToDoScreen.ToDoItem>(0) {
-                    taskName.hasText("Buy groceries")
-                    dueTime.hasText("18:30")
+                    taskName.hasText(name)
+                    dueTime.hasText("$hours:$minutes")
                 }
             }
         }

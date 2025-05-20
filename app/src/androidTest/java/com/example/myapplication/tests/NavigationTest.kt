@@ -1,6 +1,7 @@
 package com.example.myapplication.tests
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule
+import com.example.myapplication.R
 import com.example.myapplication.activities.MainActivity
 import com.example.myapplication.scenarios.MenuScenario
 import com.example.myapplication.screen.MenuScreen
@@ -26,7 +27,7 @@ class NavigationTest : TestCase() {
             MenuScreen {
                 toDoButton {
                     isVisible()
-                    hasText("Task list")
+                    hasText(R.string.todo_list)
                 }
             }
         }
@@ -52,7 +53,7 @@ class NavigationTest : TestCase() {
             MenuScreen {
                 wiFiCheckButton {
                     isVisible()
-                    hasText("Check WiFi")
+                    hasText(R.string.wifi_check)
                 }
             }
         }

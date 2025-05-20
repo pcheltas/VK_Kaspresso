@@ -8,6 +8,11 @@ import org.junit.Rule
 import org.junit.Test
 
 class FlakyTest : TestCase() {
+    companion object {
+        private const val COUNTER_1: String = "Counter: 1"
+        private const val TIMEOUT: Long = 16_000
+    }
+
     @get:Rule
     val activityRule = ActivityScenarioRule(FlakyCounterActivity::class.java)
 
@@ -16,7 +21,7 @@ class FlakyTest : TestCase() {
         step("Click on increment button") {
             FlakyScreen {
                 incrementButton.click()
-                counterText.hasText("Counter: 1")
+                counterText.hasText(COUNTER_1)
             }
         }
     }
@@ -26,8 +31,8 @@ class FlakyTest : TestCase() {
         step("Click on increment button") {
             FlakyScreen {
                 incrementButton.click()
-                flakySafely(timeoutMs = 16_000) {
-                    counterText.hasText("Counter: 1")
+                flakySafely(TIMEOUT) {
+                    counterText.hasText(COUNTER_1)
                 }
             }
         }

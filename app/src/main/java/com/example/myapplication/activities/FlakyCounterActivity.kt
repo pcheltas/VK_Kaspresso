@@ -9,6 +9,7 @@ import com.example.myapplication.databinding.ActivityFlakyBinding
 class FlakyCounterActivity : ComponentActivity() {
     private lateinit var binding: ActivityFlakyBinding
     private var counter = 0
+    private var delay: Long = 15000
     private val handler = Handler(Looper.getMainLooper())
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,7 +21,7 @@ class FlakyCounterActivity : ComponentActivity() {
             handler.postDelayed({
                 counter++
                 binding.counter.text = "Counter: $counter"
-            }, 15000)
+            }, delay)
         }
     }
 

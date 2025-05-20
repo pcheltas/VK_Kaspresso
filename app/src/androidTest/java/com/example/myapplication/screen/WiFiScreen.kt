@@ -1,5 +1,6 @@
 package com.example.myapplication.screen
 
+import androidx.test.espresso.web.webdriver.Locator
 import com.example.myapplication.R
 import com.example.myapplication.activities.WifiCheckActivity
 import com.kaspersky.kaspresso.screens.KScreen

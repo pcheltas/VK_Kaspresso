@@ -5,7 +5,12 @@ import com.example.myapplication.screen.ToDoScreen
 import com.kaspersky.kaspresso.testcases.api.scenario.Scenario
 import com.kaspersky.kaspresso.testcases.core.testcontext.TestContext
 
-class AddTaskScenario : Scenario() {
+class AddTaskScenario(
+    private val name: String,
+    private val description: String,
+    private val timeHour: Int,
+    private val timeMinute: Int
+) : Scenario() {
     override val steps: TestContext<Unit>.() -> Unit = {
         step("Open todo screen and verify it is ready") {
             ToDoScreen {
@@ -22,8 +27,8 @@ class AddTaskScenario : Scenario() {
         step("Filling fields with new task data") {
             ToDoScreen {
                 NewTaskScreen {
-                    nameEdit.replaceText("Go to dentist")
-                    descEdit.replaceText("Dr. name - Mr. Green")
+                    nameEdit.replaceText(name)
+                    descEdit.replaceText(description)
 
                 }
             }
@@ -33,7 +38,7 @@ class AddTaskScenario : Scenario() {
             ToDoScreen {
                 NewTaskScreen {
                     timePickerButton.click()
-                    timePicker.setTime(12, 30)
+                    timePicker.setTime(timeHour, timeMinute)
                     timePickerOkButton.click()
                 }
             }
@@ -49,10 +54,10 @@ class AddTaskScenario : Scenario() {
             ToDoScreen.recyclerView {
                 childAt<ToDoScreen.ToDoItem>(0) {
                     taskName {
-                        hasText("Go to dentist")
+                        hasText(name)
                     }
                     dueTime {
-                        hasText("12:30")
+                        hasText("$timeHour:$timeMinute")
                     }
                 }
             }
