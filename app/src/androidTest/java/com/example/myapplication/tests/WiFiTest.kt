@@ -1,9 +1,7 @@
 package com.example.myapplication.tests
 
-import androidx.compose.ui.graphics.BlendMode.Companion.Screen
 import androidx.test.espresso.web.webdriver.Locator
 import androidx.test.ext.junit.rules.ActivityScenarioRule
-import com.example.myapplication.activities.NewTaskActivity
 import com.example.myapplication.activities.WifiCheckActivity
 import com.example.myapplication.screen.WiFiScreen
 import com.kaspersky.kaspresso.testcases.api.testcase.TestCase

@@ -12,34 +12,24 @@
         android:layout_gravity="center"
         android:layout_height="wrap_content"
         >
-
-        <Button
-            android:id="@+id/btnTodoList"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/counter"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:text="@string/todo_list"
-            android:paddingStart="32dp"
-            android:paddingEnd="32dp"/>
-
-        <Button
-            android:id="@+id/btnCheckWifi"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:text="@string/wifi_check"
-            android:paddingStart="32dp"
-            android:paddingEnd="32dp"
+            android:text="Counter: 0"
+            android:textSize="18sp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="30dp"
             />
-
         <Button
             android:id="@+id/btnFlucky"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginBottom="16dp"
-            android:text="Flucky test"
-        android:paddingStart="32dp"
-        android:paddingEnd="32dp"
+            android:text="Ckick"
+            android:paddingStart="32dp"
+            android:paddingEnd="32dp"
             />
     </LinearLayout>
 </RelativeLayout>

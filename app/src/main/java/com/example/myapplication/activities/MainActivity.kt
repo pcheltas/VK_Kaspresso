@@ -20,5 +20,9 @@ class MainActivity : ComponentActivity() {
         binding.btnCheckWifi.setOnClickListener {
             startActivity(Intent(this, WifiCheckActivity::class.java))
         }
+
+        binding.btnFlucky.setOnClickListener {
+            startActivity(Intent(this, FlakyCounterActivity::class.java))
+        }
     }
 }
