@@ -11,4 +11,6 @@
     <string name="click_counter_button">Click</string>
     <string name="flaky_test_button">Flaky test</string>
     <string name="go_to_tutorial_button">Go to tutorial</string>
+    <string name="place_holder">Place Holder</string>
+    <string name="checkbox">CheckBox</string>
 </resources>

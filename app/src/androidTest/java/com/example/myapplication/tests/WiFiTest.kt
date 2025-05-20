@@ -30,6 +30,7 @@ class WiFiTest : TestCase() {
             WiFiScreen {
                 checkButton.click()
                 wifiState.hasText(R.string.wifi_check)
+                testLogger.i(device.network.toString())
             }
         }
         step("Go to web tutorial page") {
