@@ -10,7 +10,9 @@
     <string name="default_counter">Counter: 0</string>
     <string name="click_counter_button">Click</string>
     <string name="flaky_test_button">Flaky test</string>
+    <string name="permission_button">Request permission</string>
     <string name="go_to_tutorial_button">Go to tutorial</string>
     <string name="place_holder">Place Holder</string>
     <string name="checkbox">CheckBox</string>
+    <string name="request_success">You got the permission</string>
 </resources>

@@ -8,20 +8,31 @@ import com.example.myapplication.screen.MenuScreen
 import com.example.myapplication.screen.ToDoScreen
 import com.example.myapplication.screen.WiFiScreen
 import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
 
 class NavigationTest : TestCase() {
 
+    private lateinit var scenario: MenuScenario
+
     @get:Rule
     val activityRule = ActivityScenarioRule(MainActivity::class.java)
 
+    @Before
+    fun setUp() {
+        scenario = MenuScenario()
+
+        run {
+            step("Verify app is prepared") {
+                scenario(scenario)
+            }
+        }
+    }
+
     @Test
     fun testNavigateToToDoScreen() = run {
-        step("Verify app is prepared") {
-            scenario( MenuScenario () )
-        }
 
         step("Verify todo navigation button exists") {
             MenuScreen {
@@ -45,9 +56,6 @@ class NavigationTest : TestCase() {
 
     @Test
     fun testNavigateToWiFiScreen() = run {
-        step("Verify app is prepared") {
-            scenario( MenuScenario () )
-        }
 
         step("Verify wifi navigation button exists") {
             MenuScreen {
@@ -58,8 +66,7 @@ class NavigationTest : TestCase() {
             }
         }
 
-        step("Press on wifi nav button and check navigation")
-        {
+        step("Press on wifi nav button and check navigation") {
             MenuScreen {
                 wiFiCheckButton.click()
             }

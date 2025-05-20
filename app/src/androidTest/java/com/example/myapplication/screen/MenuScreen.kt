@@ -11,4 +11,6 @@ object MenuScreen : KScreen<MenuScreen>(){
 
     val toDoButton = KButton {withId(R.id.btnTodoList)}
     val wiFiCheckButton = KButton {withId(R.id.btnCheckWifi)}
+    val flakyButton = KButton{withId(R.id.btnFlucky)}
+    val requestPermissionButton = KButton{withId(R.id.btnRequestPermission)}
 }
