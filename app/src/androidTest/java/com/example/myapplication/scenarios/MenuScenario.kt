@@ -1,5 +1,6 @@
 package com.example.myapplication.scenarios
 
+import com.example.myapplication.R
 import com.example.myapplication.screen.MenuScreen
 import com.kaspersky.kaspresso.testcases.api.scenario.Scenario
 import com.kaspersky.kaspresso.testcases.core.testcontext.TestContext
@@ -10,12 +11,12 @@ class MenuScenario : Scenario() {
             MenuScreen {
                 toDoButton {
                     isVisible()
-                    hasText("Task list")
+                    hasText(R.string.todo_list)
                 }
 
                 wiFiCheckButton {
                     isVisible()
-                    hasText("Check WiFi")
+                    hasText(R.string.wifi_check)
                 }
             }
         }
