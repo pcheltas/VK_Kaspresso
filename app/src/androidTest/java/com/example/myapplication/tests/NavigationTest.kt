@@ -32,7 +32,11 @@ class NavigationTest : TestCase() {
     }
 
     @Test
-    fun testNavigateToToDoScreen() = run {
+    fun testNavigateToToDoScreen() = before {
+//        устанавливаем необходимые настройки для теста
+    } .after {
+//        и возвращаем обратно после теста
+    } .run {
 
         step("Verify todo navigation button exists") {
             MenuScreen {

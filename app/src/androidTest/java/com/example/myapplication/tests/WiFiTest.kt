@@ -17,14 +17,16 @@ class WiFiTest : TestCase() {
         private const val ERR_LOCATOR: String = "//*[contains(text(), 'net')]"
         private const val ERR_NET_TEXT: String = "ERR_INTERNET_DISCONNECTED"
     }
+
     @get:Rule
     val activityRule = ActivityScenarioRule(WifiCheckActivity::class.java)
 
     @Test
-    fun testWifiEnabledFlow() = run {
-        step("Enable Wi-Fi") {
-            device.network.enable()
-        }
+    fun testWifiEnabledFlow() =
+        before {
+        device.network.enable()
+    }.after {  }
+        .run {
 
         step("Check Wi-Fi is enabled") {
             testLogger.i(device.network.toString())
@@ -54,9 +56,13 @@ class WiFiTest : TestCase() {
     }
 
     @Test
-    fun testWifiDisabledFlow() = run {
+    fun testWifiDisabledFlow() = before {
+        device.network.disable()
+    } .after {
+        device.network.enable()
+    } .run {
         step("Disable Wi-Fi") {
-            device.network.disable()
+
         }
 
         step("Check Wi-Fi is disabled") {
