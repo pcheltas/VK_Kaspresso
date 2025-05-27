@@ -62,7 +62,7 @@ class ToDoTest(
 
         step("Mask task as completed") {
             ToDoScreen.recyclerView {
-                childAt<ToDoScreen.ToDoItem>(0) {
+                firstChild<ToDoScreen.ToDoItem> {
                     completeButton.click()
                 }
             }
@@ -70,7 +70,7 @@ class ToDoTest(
 
         step("Verify text has strike through") {
             ToDoScreen.recyclerView {
-                childAt<ToDoScreen.ToDoItem>(0) {
+                firstChild<ToDoScreen.ToDoItem> {
                     taskName.matches { hasStrikeThroughText() }
                 }
             }
@@ -82,7 +82,7 @@ class ToDoTest(
 
         step("Click on delete button") {
             ToDoScreen.recyclerView {
-                childAt<ToDoScreen.ToDoItem>(0) {
+                firstChild<ToDoScreen.ToDoItem> {
                     deleteButton.click()
                 }
             }
@@ -100,7 +100,7 @@ class ToDoTest(
 
         step("Click on task and change task data") {
             ToDoScreen.recyclerView {
-                childAt<ToDoScreen.ToDoItem>(0) {
+                firstChild<ToDoScreen.ToDoItem> {
                     click()
                 }
             }
@@ -116,7 +116,7 @@ class ToDoTest(
 
         step("Verify task has been changed") {
             ToDoScreen.recyclerView {
-                childAt<ToDoScreen.ToDoItem>(0) {
+                firstChild<ToDoScreen.ToDoItem> {
                     taskName.hasText(name)
                     dueTime.hasText("$hours:$minutes")
                 }
